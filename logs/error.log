@@ -1,0 +1,3 @@
+2024-10-14 17:14:09 [[31merror[39m]: [GET] api/mocks/mockingusers Users validation failed: password: Path `password` is required., email: Path `email` is required., last_name: Path `last_name` is required., first_name: Path `first_name` is required.
+2024-10-14 17:16:49 [[31merror[39m]: [GET] api/mocks/mockingusers SOY UN ERROR XD
+2024-10-14 17:18:38 [[31merror[39m]: [GET] api/mocks/mockingusers Users validation failed: password: Path `password` is required., email: Path `email` is required., last_name: Path `last_name` is required., first_name: Path `first_name` is required.

@@ -1,6 +1,7 @@
 import { Router} from 'express';
-import adoptionsController from '../controllers/adoptions.controller.js';
+import {AdoptionsController} from '../controllers/adoptions.controller.js';
 
+const adoptionsController = new AdoptionsController();
 const router = Router();
 
 router.get('/',adoptionsController.getAllAdoptions);

@@ -1,7 +1,9 @@
 import { fakerES_MX as faker } from "@faker-js/faker"
+import { createHash } from "../utils/index.js";
 
 
-export const generateUsersMock = (amount) => {
+//HACEMOS EL MOCK PARA GENERAR USUARIOS AL AZAR CON FAKER
+export const generateUsersMock = async (amount) => {  //al ser una funcion asincrona nos retorna una promesa
 
     const users = [];
     for(let i = 0; i < amount; i++) {
@@ -9,8 +11,8 @@ export const generateUsersMock = (amount) => {
           first_name: faker.person.firstName(),
           last_name: faker.person.lastName(),
           email: faker.internet.email(),
-          password: "123",
-          role: "user",
+          password: await createHash("coder123"),
+          role: faker.datatype.boolean() ? "user" : "admin", //usamos "faker" ya que nos devuelve valores booleanos
           pets: [],
         };
         users.push(user);
