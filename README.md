@@ -24,9 +24,7 @@ Otras Características:
 
 Instalación y Ejecución
 
-    Clona el repositorio:
-
-git clone https://github.com/usuario/nombre-del-repositorio.git
+  CLONA EL REPOSITORIO
 
 Instala las dependencias:
 
