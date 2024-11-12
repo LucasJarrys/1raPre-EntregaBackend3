@@ -40,11 +40,11 @@ Este proyecto está completamente Dockerizado para facilitar su despliegue en cu
 
     Construir la imagen Docker:
 
-docker build -t ipets .
+docker build -t app-adoption .
 
 Ejecutar el contenedor:
 
-docker run --name ipets-app -p 3000:8080 ipets
+docker run -p 3000:8080 app-adoption
 
 Subir la imagen a Docker Hub:
 La imagen del proyecto está disponible en Docker Hub para su fácil descarga e instalación:
@@ -56,29 +56,8 @@ Requisitos del Sistema
     Node.js v20 o superior.
     Docker y Docker Compose para el manejo de contenedores.
 
-Despliegue con Docker Compose
-
-Si deseas ejecutar la aplicación junto con MongoDB y otros servicios, puedes utilizar Docker Compose con el siguiente archivo docker-compose.yml:
-
-version: '3'
-services:
-  app:
-    image: ipets
-    ports:
-      - "3000:8080"
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-  portainer:
-    image: portainer/portainer-ce:latest
-    ports:
-      - "9000:9000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-
 Documentación de la API
 
 Toda la documentación de los endpoints está disponible en Swagger en la siguiente ruta:
 
-    Ruta de documentación: /api-docs
+    Ruta de documentación: http://localhost:8080/api-docs/
