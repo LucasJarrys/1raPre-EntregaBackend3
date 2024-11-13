@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Users from "../dao/Users.dao.js";
 import { customError } from "../errors/custom.error.js";
 import { generateUsersMock } from "../mocks/user.mock.js";
@@ -19,9 +20,13 @@ export class UserServices {
 
     //BUSCAMO USUARIOS POR ID
     async getById(id) {
-      const user = await this.userDao.getBy(id);
+      const user = await this.userDao.getById(id);
       if(!user) throw customError.notFoundError(`User id ${id} not found`);
       return user;
+    }
+
+    async getByEmail(email) {
+      return await this.userDao.getByEmail(email);
     }
 
     //CREAR USUARIOS
@@ -44,8 +49,21 @@ export class UserServices {
 
     //BORRAR/REMOVER
     async remove(id) {
+      // await this.userDao.delete(id);
+      // return "ok"; try {
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw customError.badRequestError(`Invalid ObjectId: ${id}`);
+      }
+      const user = await this.userDao.getById(id);
+      if (!user) {
+        throw customError.notFoundError(`User id ${id} not found`);
+      }
       await this.userDao.delete(id);
-      return "ok";
+      return "User Deleted";
+    } catch (error) {
+      console.error("Error in remove method:", error);
+      throw error;
+    
     }
 
     //GENERAMOS 10 USUARIOS AL AZAR

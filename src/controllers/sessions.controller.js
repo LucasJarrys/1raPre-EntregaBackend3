@@ -15,7 +15,7 @@ export class SessionsController {
       const { first_name, last_name, email, password } = req.body;
       if (!first_name || !last_name || !email || !password)
         return res.status(400).send({ status: "error", error: "Incomplete values" });
-      const exists = await this.userServices.getUserByEmail(email);
+      const exists = await this.userServices.getByEmail(email);
       if (exists) return res.status(400).send({ status: "error", error: "User already exists" });
       const hashedPassword = await createHash(password);
       const user = {
@@ -25,7 +25,7 @@ export class SessionsController {
         password: hashedPassword,
       };
       let result = await this.userServices.create(user);
-      res.send({ status: "success", payload: result._id });
+      res.status(201).json({ status: "success", payload: result });
     } catch (error) {
       next(error);
     }
@@ -35,7 +35,7 @@ export class SessionsController {
     try {
       const { email, password } = req.body;
       if (!email || !password) return res.status(400).send({ status: "error", error: "Incomplete values" });
-      const user = await this.userServices.getUserByEmail(email);
+      const user = await this.userServices.getByEmail(email);
       if (!user) return res.status(404).send({ status: "error", error: "User doesn't exist" });
       const isValidPassword = await passwordValidation(user, password);
       if (!isValidPassword) return res.status(400).send({ status: "error", error: "Incorrect password" });

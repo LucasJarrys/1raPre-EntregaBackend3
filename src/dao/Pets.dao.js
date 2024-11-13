@@ -1,28 +1,55 @@
-import petModel from "./models/Pet.js";
+import PetModel from "./models/Pet.js";
 
-export default class Pet {
+export default class Pets {
+  get = (params) => {
+    return PetModel.find(params);
+  };
 
-    get = (params) =>{
-        return petModel.find(params)
-    }
+  getBy = (params) => {
+    return PetModel.findOne(params);
+  };
 
-    getBy = (params) =>{
-        return petModel.findOne(params);
-    }
+  save = (doc) => {
+    return PetModel.create(doc);
+  };
 
-    save = (doc) =>{
-        return petModel.create(doc);
-    }
+  update = (id, doc) => {
+    return PetModel.findByIdAndUpdate(id, { $set: doc }, { new: true });
+  };
 
-    saveMany = (docs) =>{
-        return petModel.insertMany(docs);
-    }
+  delete = (id) => {
+    return PetModel.findByIdAndDelete(id);
+  };
 
-    update = (id,doc) =>{
-        return petModel.findByIdAndUpdate(id,{$set:doc})
-    }
-
-    delete = (id) =>{
-        return petModel.findByIdAndDelete(id);
-    }
+  saveMany = (docs) => {
+    return PetModel.insertMany(docs);
+  };
 }
+// import petModel from "./models/Pet.js";
+
+// export default class Pet {
+
+//     get = (params) =>{
+//         return petModel.find(params)
+//     }
+
+//     getBy = (params) =>{
+//         return petModel.findOne(params);
+//     }
+
+//     save = (doc) =>{
+//         return petModel.create(doc);
+//     }
+
+//     saveMany = (docs) =>{
+//         return petModel.insertMany(docs);
+//     }
+
+//     update = (id,doc) =>{
+//         return petModel.findByIdAndUpdate(id,{$set:doc}, {new: true});
+//     }
+
+//     delete = (id) =>{
+//         return petModel.findByIdAndDelete(id);
+//     }
+// }

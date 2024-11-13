@@ -22,7 +22,7 @@ export class PetsController {
         if (!name || !specie || !birthDate) return res.status(400).send({ status: "error", error: "Incomplete values" });
         const pet = PetDTO.getPetInputFrom({ name, specie, birthDate });
         const result = await this.petService.create(pet);
-        res.send({ status: "success", payload: result });
+        res.status(201).json({ status: "success", payload: result });
       } catch (error) {
         next(error);
       }
@@ -33,16 +33,28 @@ export class PetsController {
         const petUpdateBody = req.body;
         const petId = req.params.pid;
         const result = await this.petService.update(petId, petUpdateBody);
-        res.send({ status: "success", message: "pet updated" });
+        res.send({ status: "success", payload: result });
       } catch (error) {
         next(error);
+      }
+    };
+
+    createPetMocks = async (req, res) => {
+      try {
+        const pets = await this.petsServices.createMocks();
+        res.status(201).json({ message: "Mock pets created", pets });
+      } catch (error) {
+        console.error("Error creating mock pets:", error);
+        res
+          .status(500)
+          .json({ message: "Error creating mock pets", error: error.message });
       }
     };
   
     deletePet = async (req, res, next) => {
       try {
         const petId = req.params.pid;
-        const result = await this.petService.remove(petId);
+        const result = await this.petService.delete(petId);
         res.send({ status: "success", message: "pet deleted" });
       } catch (error) {
         next(error);

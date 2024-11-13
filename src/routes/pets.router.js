@@ -6,6 +6,7 @@ const petsController = new PetsController();
 const router = Router();
 
 router.get("/", petsController.getAllPets);
+router.get("/mock", petsController.createPetMocks);
 router.post("/", petsController.createPet);
 router.post("/withimage", uploader.single("image"), petsController.createPetWithImage);
 router.put("/:pid", petsController.updatePet);
