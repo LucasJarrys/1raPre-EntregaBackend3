@@ -2,7 +2,7 @@ paths:
   /api/adoptions:
     get:
       summary: Get adoptions
-      description: Retrieves a list of adoptions with adopter and pet information.
+      description: Recupera una lista de adopciones con información del adoptante y de la mascota.
       tags:
         - Adoptions
       responses:

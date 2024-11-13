@@ -2,7 +2,7 @@ paths:
   /api/users:
     get:
       summary: Get users
-      description: Get users
+      description: Obtener usuarios
       tags:
         - Users
       responses:

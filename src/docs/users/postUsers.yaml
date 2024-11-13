@@ -2,7 +2,7 @@ paths:
   /api/users:
     post:
       summary: Create users
-      description: Create one or more users.
+      description: Crear usuarios.
       tags:
         - Users
       requestBody:

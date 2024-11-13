@@ -2,7 +2,7 @@ paths:
   /api/adoptions/{aid}:
     delete:
       summary: Eliminar una adopción
-      description: Elimina una adopción específica mediante su ID.
+      description: Elimina una adopción específica por su ID.
       tags:
         - Adoptions
       parameters:
@@ -14,7 +14,7 @@ paths:
             type: string
       responses:
         "204":
-          description: Adopción eliminada correctamente.
+          description: Adopción eliminada.
         "404":
           description: Adopción no encontrada.
         "400":

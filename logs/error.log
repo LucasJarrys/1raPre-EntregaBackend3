@@ -15,3 +15,6 @@
 2024-11-12 19:39:46 [[31merror[39m]: undefined this.petService.remove is not a function
 2024-11-12 19:42:00 [[31merror[39m]: undefined this.petService.remove is not a function
 2024-11-12 22:21:04 [[31merror[39m]: undefined Expected double-quoted property name in JSON at position 30
+2024-11-13 12:23:23 [[31merror[39m]: undefined Expected double-quoted property name in JSON at position 34
+2024-11-13 12:26:50 [[31merror[39m]: undefined usersService is not defined
+2024-11-13 12:29:05 [[31merror[39m]: undefined usersService is not defined

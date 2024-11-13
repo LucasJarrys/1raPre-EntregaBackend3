@@ -43,7 +43,8 @@ export class AdoptionsController {
       const userObjectId = mongoose.Types.ObjectId(uid);
       const petObjectId = mongoose.Types.ObjectId(pid);
 
-      // Validar si el usuario existe
+      
+      //VERIFICAMOS QUE EL USER EXISTA
       const userExists = await UserModel.findById(userObjectId);
       if (!userExists) {
         return res
@@ -51,7 +52,7 @@ export class AdoptionsController {
           .json({ status: "error", message: "User not found" });
       }
 
-      // Validar si la mascota existe
+      // VERIFICAMOS QUE LA MASCOTA EXISTA
       const petExists = await Pet.findById(petObjectId);
       if (!petExists) {
         return res
@@ -78,7 +79,7 @@ export class AdoptionsController {
 
       await newAdoption.save();
 
-      // Recuperar la adopción creada con detalles completos
+      // OBTENER LA ADOPCION CREADA
       const savedAdoption = await AdoptionModel.findById(newAdoption._id)
         .populate("user")
         .populate("pet");
@@ -108,6 +109,9 @@ export class AdoptionsController {
     }
   }
 }
+
+
+// ADOPTION DEL PROFE
 // // import { adoptionsService, petsService } from "../services/index.js"
 // import { UserServices } from "../services/user.services.js";
 

@@ -34,9 +34,7 @@ router.get("/generateData/:cu/:cp", async (req, res) => {
   const usersResponse = await userServices.createMany(users);
   const petsResponse = await petsServices.createMany(pets);
 
-  res
-    .status(201)
-    .json({ status: "ok", payload: { usersResponse, petsResponse } });
+  res.status(201).json({ status: "ok", payload: { usersResponse, petsResponse } });
 });
 
 export default router;
