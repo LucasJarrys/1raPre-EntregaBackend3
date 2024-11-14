@@ -9,9 +9,8 @@ const sessionRequest = supertest("http://localhost:8080/api/sessions");
 describe("Test de integración Adoptions", () => {
     let userTest;
     let testPet;
-    let adoptionTest;
+    let adoptionTest; 
 
-    //User register
 
     it("[POST]/api/sessions/register - Debe registrar un usuario/a", async () => {
       const newUser = {
