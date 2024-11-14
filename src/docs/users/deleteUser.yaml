@@ -1,8 +1,8 @@
 paths:
   /api/users/{uid}:
     delete:
-      summary: delete users
-      description: borrar uno o mas usurios.
+      summary: Borrar usuario
+      description: borrar un usurio.
       tags:
         - Users
       parameters:

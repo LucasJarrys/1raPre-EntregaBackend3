@@ -19,16 +19,25 @@ export class AdoptionsController {
   async getAdoption(req, res) {
     try {
       const { aid } = req.params;
+
+      // Validar si el ID tiene el formato correcto de un ObjectId de MongoDB
+    if (!aid.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({
+        status: "error",
+        error: "Invalid Adoption ID"
+      });
+    }
+    //BUSCAR LA ADOPCION POR ID
       const adoption = await AdoptionModel.findById(aid)
         .populate("user")
         .populate("pet");
-
+    //SI NO ENCUENTRA LA ADOPCION DEVUELVE UN 404
       if (!adoption) {
         return res
           .status(404)
           .json({ status: "error", message: "Adoption not found" });
       }
-
+      //RESPONDER CON LA ADOPCION ENCONTRADA
       res.json({ status: "success", adoption });
     } catch (error) {
       console.error(error);

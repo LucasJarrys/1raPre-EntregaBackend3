@@ -1,7 +1,7 @@
 paths:
   /api/adoptions/{uid}/{pid}:
     post:
-      summary: Create an adoption
+      summary: Crea una adopcion
       description: Crea una adopción entre un usuario/a y una mascota.
       tags:
         - Adoptions

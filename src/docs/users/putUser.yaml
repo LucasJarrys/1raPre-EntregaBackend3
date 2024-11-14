@@ -1,7 +1,7 @@
 paths:
   /api/users/{uid}:
     put:
-      summary: update users
+      summary: Actualizar usuarios
       description: Actualizar usuarios.
       tags:
         - Users

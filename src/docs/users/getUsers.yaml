@@ -1,7 +1,7 @@
 paths:
   /api/users:
     get:
-      summary: Get users
+      summary: Obtener todos los usuarios
       description: Obtener usuarios
       tags:
         - Users
